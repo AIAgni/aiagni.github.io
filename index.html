@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PhoneCam Link</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="bg-orb orb-a"></div>
+    <div class="bg-orb orb-b"></div>
+
+    <main class="shell">
+      <header class="hero">
+        <p class="kicker">PhoneCam Link</p>
+        <h1>Use your phone camera in a private meeting room.</h1>
+        <p class="subtitle">
+          Sign in, create a session, share one secure link, and join from phone + laptop.
+        </p>
+      </header>
+
+      <section class="card" id="authCard">
+        <h2>Sign In</h2>
+        <p class="hint">Use the account in config.js</p>
+        <form id="loginForm" class="grid">
+          <label>
+            Username
+            <input id="username" name="username" autocomplete="username" required />
+          </label>
+          <label>
+            Password
+            <input
+              id="password"
+              name="password"
+              type="password"
+              autocomplete="current-password"
+              required
+            />
+          </label>
+          <button type="submit">Sign In</button>
+        </form>
+        <p id="authMessage" class="message"></p>
+      </section>
+
+      <section class="card hidden" id="sessionCard">
+        <div class="card-head">
+          <h2>Session Control</h2>
+          <button id="logoutBtn" class="ghost">Logout</button>
+        </div>
+
+        <div class="grid two">
+          <label>
+            Your Display Name
+            <input id="displayName" value="AIAgni" />
+          </label>
+          <label>
+            Access Key (optional but recommended)
+            <input id="accessKey" placeholder="set a short secret" />
+          </label>
+        </div>
+
+        <div class="actions">
+          <button id="createSessionBtn">Create New Session</button>
+          <button id="joinExistingBtn" class="ghost">Join From Link</button>
+        </div>
+
+        <div id="sessionOutput" class="hidden">
+          <h3>Your Session Links</h3>
+          <label>
+            Laptop Host Link
+            <input id="hostLink" readonly />
+          </label>
+          <label>
+            Phone Camera Link
+            <input id="phoneLink" readonly />
+          </label>
+          <div class="actions">
+            <button id="copyHost">Copy Host Link</button>
+            <button id="copyPhone">Copy Phone Link</button>
+          </div>
+        </div>
+
+        <div id="joinPanel" class="hidden">
+          <h3>Join a Shared Session</h3>
+          <div class="grid two">
+            <label>
+              Room ID
+              <input id="joinRoom" placeholder="example-room-123" />
+            </label>
+            <label>
+              Session Access Key
+              <input id="joinKey" placeholder="if provided by host" />
+            </label>
+          </div>
+          <button id="buildJoinLink">Build Join Links</button>
+        </div>
+
+        <div id="launchPanel" class="hidden">
+          <h3>Launch Room</h3>
+          <p id="launchSummary" class="hint"></p>
+          <div class="actions">
+            <button id="launchHost">Open as Laptop Host</button>
+            <button id="launchPhone" class="ghost">Open as Phone Camera</button>
+          </div>
+          <p class="hint small">
+            Tip: On phone, keep microphone muted to avoid echo. Use strong internet for stable video.
+          </p>
+        </div>
+      </section>
+
+      <footer class="note">
+        <p>
+          Privacy note: this app only creates links and opens a room on meet.jit.si. Use HTTPS hosting.
+        </p>
+      </footer>
+    </main>
+
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
